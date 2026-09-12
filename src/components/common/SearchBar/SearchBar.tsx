@@ -1,29 +1,74 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { TagItem } from "./TagItem/TagItem";
+import TagInputs from "./TagInputs/TagInputs";
+import { SearchInput } from "./SearchInput/SearchInput";
+
 import "./SearchBar.css";
 
-  const messages = [
-    "Ryzen 5 7600x...",
-    "Quest 2 VR...",
-    "3090...",
-    "32Gb Ram...",
-    "DDR5...",
-    "Hatsune Miku...",
-  ];
+const tagging1 = [
+  {
+    type: "Hardware",
+    icon: "fa-solid fa-microchip fa-sm",
+  },
+  {
+    type: "Periférico",
+    icon: "fa-solid fa-keyboard fa-sm",
+  },
+  {
+    type: "Setup",
+    icon: "fa-solid fa-desktop fa-sm",
+  },
+  {
+    type: "Friki",
+    icon: "fa-solid fa-dice-d20 fa-sm",
+  },
+  {
+    type: "Accesorios",
+    icon: "fa-solid fa-headphones fa-sm",
+  },
+  {
+    type: "Consolas",
+    icon: "fa-solid fa-gamepad fa-sm",
+  },
+  {
+    type: "Oficina",
+    icon: "fa-solid fa-briefcase fa-sm",
+  },
+];
+
+const tagging2 = [
+  {
+    type: "Mi ubicación",
+    icon: "fa-solid fa-location-dot fa-sm",
+  },
+  {
+    type: "Usados/outlet",
+    icon: "fa-solid fa-box-open fa-sm",
+  },
+  {
+    type: "Hogar",
+    icon: "fa-solid fa-house fa-sm",
+  },
+  {
+    type: "Combos",
+    icon: "fa-solid fa-boxes-stacked fa-sm",
+  },
+  {
+    type: "Simuladores",
+    icon: "fa-solid fa-vr-cardboard fa-sm",
+  },
+  {
+    type: "Gameroom",
+    icon: "fa-solid fa-couch fa-sm",
+  },
+];
+
 export function SearchBar() {
-  const navigate = useNavigate();
-  const [searchedProduct] = useSearchParams();
-  const q = searchedProduct.get("q") ?? "";
-  const [isMenuOpen] = useState(false);
+  // const [errorMessage, setErrorMessage] = useState("");
   const [isFloating] = useState(false);
-  const [index, setIndex] = useState(0);
-  const [subIndex, setSubIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  // const [isSearching, setIsSearching] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
   const [isMobile] = useState(() => window.innerWidth <= 768);
-  let [text, setText] = useState(q);
   const isDrawerMode = isFloating || isMobile;
+  const [isMenuOpen] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen && isDrawerMode ? "hidden" : "";
@@ -33,91 +78,37 @@ export function SearchBar() {
     };
   }, [isMenuOpen, isDrawerMode]);
 
-  useEffect(() => {
-    if (isDeleting && subIndex === 0) {
-      setIsDeleting(false);
-      setIndex((prev) => (prev + 1) % messages.length);
-      return;
-    }
-
-    if (!isDeleting && subIndex === messages[index].length) {
-      const timeout = setTimeout(() => setIsDeleting(true), 2000);
-      return () => clearTimeout(timeout);
-    }
-
-    const timeout = setTimeout(
-      () => {
-        setSubIndex((prev) => prev + (isDeleting ? -1 : 1));
-      },
-      isDeleting ? 30 : 100,
-    );
-    return () => clearTimeout(timeout);
-  }, [subIndex, isDeleting, index]);
-
-  const handleChange = (event: any) => {
-    setText(event.target.value);
-    if (errorMessage) setErrorMessage("");
-  };
-
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      executeSearch();
-    }
-  };
-
-  const handleClick = (/* event: React.MouseEvent<HTMLButtonElement> */) => {
-    executeSearch();
-  };
-
-  const executeSearch = () => {
-    text = text.trim();
-    if (text == "" || text.includes("*")) {
-      // querys
-      setErrorMessage("Debes realizar una búsqueda.");
-      navigate("/");
-    } else {
-      navigate(`/search?q=${text}`);
-    }
-  };
-
   return (
     <>
       <div
         className={`sb__search-wrapper
            ${isFloating ? "floating" : ""} 
         `}
-        onMouseLeave={() => {
-          {
-            /*} setTimeout(() => {
-            setIsSearching(false);
-          }, 750); */
-          }
-        }}
       >
         <div className="sb__input-container">
-          <input
-            type="text"
-            placeholder={messages[index].substring(0, subIndex)}
-            aria-label="Search"
-            className="sb__search-input"
-            value={text}
-            onChange={handleChange}
-            required
-            onKeyDown={handleKeyDown}
-          />
-
-          <button
-            onClick={handleClick}
-            style={{ padding: "0px", background: "transparent" }}
-          >
-            <i className="fa-solid fa-magnifying-glass search-icon"></i>
-          </button>
+          <SearchInput />
         </div>
-        {errorMessage && <p className="sb__error">{errorMessage}</p>}
+        <div className="sb__tagging">
+          <div className="sb__tagging-1">
+            <h2>Busco |</h2>
+            {tagging1.map(({ type, icon }, index) => (
+              <TagItem key={index} type={type} icon={icon} tagging={1} />
+            ))}
+          </div>
+          <div className="sb__tagging-2">
+            <h2>En |</h2>
+            {tagging2.map(({ type, icon }, index) => (
+              <TagItem key={index} type={type} icon={icon} tagging={2} />
+            ))}
+          </div>
+          <div className="other-tags">
+            <TagInputs />
+          </div>
+        </div>
+        {/* errorMessage && <p className="sb__error">{errorMessage}</p> */}
       </div>
     </>
   );
 }
 
 export default SearchBar;
-              /* onClick={() => setIsSearching(true)} */

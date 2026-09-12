@@ -11,19 +11,19 @@ export function Stats() {
         <div className="s__stats-grid">
           <StatBox
             title="Tiendas activas"
-            number={50}
+            number={60}
             icon="fa-solid fa-store"
             accentColor="#a3e635"
           />
           <StatBox
             title="Productos"
-            number={16000}
+            number={42000}
             icon="fa-solid fa-cube"
             accentColor="#06b6d4"
           />
           <StatBox
             title="Info. de tiendas"
-            number={60}
+            number={70}
             icon="fa-solid fa-tag"
             accentColor="#f43f5e"
           />

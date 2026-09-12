@@ -4,12 +4,12 @@ import { MainSection } from "@components/MainSection/MainSection";
 import { MiniSearchbar } from "@components/MiniSearchbar/MiniSearchbar";
 import { StoresList } from "@components/StoresList/StoresList";
 import { Stats } from "@components/Stats/Stats";
-import { Warning } from "@components/common/Warning/Warning";
+// import { Warning } from "@components/common/Warning/Warning";
 
 export function Home() {
   return (
     <>
-      <Warning />
+      {/* <Warning /> */}
       <Navbar />
       <MainSection />
       <Stats />

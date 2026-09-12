@@ -95,7 +95,7 @@ a {
   color: var(--color-gray-100);
 }
 
-span,
+span, label,
 p {
     font-family: var(--font-body);
   color: var(--color-gray-200);

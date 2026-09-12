@@ -11,6 +11,8 @@
   margin: 0px 16px;
   flex-direction: column;
   justify-content: left;
+  position: relative;
+  
 }
 
 .sb__search-wrapper:focus-within {
@@ -27,7 +29,6 @@
   top: 115px;
 }
 
-/* todo: cambiar los nombres de css a lo correspondiente sb__stuff-name*/
 .sb__input-container {
   display: flex;
   width: 100%;
@@ -53,21 +54,6 @@
   font-size: 14px;
 }
 
-.sb__search-input {
-  background: none;
-  border: none;
-  color: var(--color-gray-200);
-  font-family: "JetBrains Mono", monospace;
-  outline: none;
-  flex: 1;
-  padding: 0;
-  font-size: 14px;
-  width: 100%;
-}
-
-.sb__search-input::placeholder {
-  color: var(--color-gray-500);
-}
 
 .sb__error {
   color: var(--color-red);
@@ -92,6 +78,46 @@
   flex-direction: column;
 }
 
+.sb__tagging {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%; 
+  margin-top: 8px; 
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow-y: auto;
+  z-index: 10;
+  padding: 16px;
+}
+
+.sb__tagging-1 {
+  display: flex;
+  flex-direction: c;
+  gap: 8px;
+  align-items: center;
+}
+
+.sb__tagging h2 {
+  margin: 6px 0px;
+}
+
+.sb__tagging-2 {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.other-tags {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
 @media (max-width: 768px) {
   .sb__search-wrapper {
     margin: 0px 4px;
@@ -103,10 +129,6 @@
     flex: 1 1 0;
     min-width: 0;
     padding: 6px;
-  }
-
-  .sb__search-input {
-    font-size: 16px;
   }
 
   .main-navbar.floating {

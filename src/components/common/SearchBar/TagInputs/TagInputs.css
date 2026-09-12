@@ -1,0 +1,14 @@
+.ti__container {
+  display: flex;
+  margin-top: 12px;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ti__more-tags {
+  width: 100%;
+}
+
+.ti__price-options {
+  width: 100%;
+}
