@@ -5,12 +5,12 @@ export function TagItem({ type, icon, tagging }) {
 
   return (
     <div
-      className={`sb__tag` + tagging + `-container`}
+      className={`sb__tag${tagging}-container${addedTag ? " added" : ""}`}
       onClick={() => setAddedTag(!addedTag)}
     >
       <i className={icon} style={{ color: "white" }}></i>
       <span>{type}</span>
-      {addedTag && <i className="fa-solid fa-x"></i>}
+      {/* addedTag && <i className="fa-solid fa-x" style={{ color: "white" }}></i> */}
     </div>
   );
 }

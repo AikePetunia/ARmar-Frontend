@@ -1,66 +1,35 @@
-.sb__search-wrapper {
+.sb__toggle-tagging {
+  height: fit-content; 
+  position: absolute;
+  justify-content: start;
+}
+.sb__toggle-tagging > button {
+    background-color: var(--color-zinc-800);
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    border-radius: 0;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(24, 24, 27, 0.6);
-  transition: all 0.3s ease;
-  width: 50%;
-  margin: 0px 16px;
-  flex-direction: column;
-  justify-content: left;
   position: relative;
-  
+  z-index: 10000;
+  bottom: -28px;
+  height: 24px;
 }
 
-.sb__search-wrapper:focus-within {
-  border-color: var(--color-lime-400);
-  box-shadow: var(--shadow-lime-md);
+.sb__toggle-tagging > button:hover {
+  transform: translateY(-1px) scale(1.01);
+  filter: brightness(1.05);
 }
-
-.sb__search-wrapper.floating {
-  width: 70%;
-}
-
-.sb__is-searching {
-  position: relative;
-  top: 115px;
-}
-
-.sb__input-container {
-  display: flex;
-  width: 100%;
-  justify-content: left;
-  justify-items: center;
-  flex-direction: row;
-}
-
-.sb__input-suggestions {
-  display: flex;
-  flex-direction: column;
-
-  justify-content: left;
-  width: 100%;
-  justify-items: center;
-  flex-direction: left;
-}
-
-.sb__input-suggestions > span {
-  cursor: pointer;
-  margin: 12px 0;
-  color: var(--color-gray-500);
-  font-size: 14px;
-}
-
 
 .sb__error {
   color: var(--color-red);
   position: absolute;
   font-size: 12px;
   padding-top: 22px;
-
 }
 
 .search-icon {
@@ -91,32 +60,30 @@
   overflow-y: auto;
   z-index: 10;
   padding: 16px;
+  display: flex;
+  flex-direction: column;
 }
 
-.sb__tagging-1 {
+.sb__tagging-1, .sb__tagging-2 {
   display: flex;
   flex-direction: c;
   gap: 8px;
   align-items: center;
+  flex-wrap: wrap; 
+}
+
+.sb__tagging-1 {
+  margin-bottom: 12px;
 }
 
 .sb__tagging h2 {
   margin: 6px 0px;
 }
 
-.sb__tagging-2 {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-}
-
 .other-tags {
   display: flex;
   flex-direction: column;
 }
-
-
 
 @media (max-width: 768px) {
   .sb__search-wrapper {
@@ -134,5 +101,8 @@
   .main-navbar.floating {
     width: min(80%, 980px);
     align-content: center;
+  }
+    .sb__tagging h2 {
+    font-size: 1rem;
   }
 }

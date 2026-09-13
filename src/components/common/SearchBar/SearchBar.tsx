@@ -65,10 +65,11 @@ const tagging2 = [
 
 export function SearchBar() {
   // const [errorMessage, setErrorMessage] = useState("");
-  const [isFloating] = useState(false);
+  const [isFloating, setIsFloating] = useState(false);
   const [isMobile] = useState(() => window.innerWidth <= 768);
   const isDrawerMode = isFloating || isMobile;
   const [isMenuOpen] = useState(false);
+  const [taggingOpened, setTaggingOpened] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen && isDrawerMode ? "hidden" : "";
@@ -78,6 +79,18 @@ export function SearchBar() {
     };
   }, [isMenuOpen, isDrawerMode]);
 
+   useEffect(() => {
+     const onScroll = () => {
+       setIsFloating(window.scrollY > 40);
+     };
+
+     onScroll();
+     window.addEventListener("scroll", onScroll, { passive: true });
+
+     return () => window.removeEventListener("scroll", onScroll);
+   }, []);
+
+  
   return (
     <>
       <div
@@ -87,24 +100,36 @@ export function SearchBar() {
       >
         <div className="sb__input-container">
           <SearchInput />
-        </div>
-        <div className="sb__tagging">
-          <div className="sb__tagging-1">
-            <h2>Busco |</h2>
-            {tagging1.map(({ type, icon }, index) => (
-              <TagItem key={index} type={type} icon={icon} tagging={1} />
-            ))}
-          </div>
-          <div className="sb__tagging-2">
-            <h2>En |</h2>
-            {tagging2.map(({ type, icon }, index) => (
-              <TagItem key={index} type={type} icon={icon} tagging={2} />
-            ))}
-          </div>
-          <div className="other-tags">
-            <TagInputs />
+          <div
+            className="sb__toggle-tagging"
+            onClick={() => setTaggingOpened(!taggingOpened)}
+          >
+            <button>
+              <i className="fa-solid fa-caret-down" style={{ padding: 0 }}></i>
+            </button>
           </div>
         </div>
+
+        {taggingOpened && (
+          <div className="sb__tagging">
+            <div className="sb__tagging-1">
+              <h2>Busco |</h2>
+              {tagging1.map(({ type, icon }, index) => (
+                <TagItem key={index} type={type} icon={icon} tagging={1} />
+              ))}
+            </div>
+            <br />
+            <div className="sb__tagging-2">
+              <h2>En |</h2>
+              {tagging2.map(({ type, icon }, index) => (
+                <TagItem key={index} type={type} icon={icon} tagging={2} />
+              ))}
+            </div>
+            <div className="other-tags">
+              <TagInputs />
+            </div>
+          </div>
+        )}
         {/* errorMessage && <p className="sb__error">{errorMessage}</p> */}
       </div>
     </>

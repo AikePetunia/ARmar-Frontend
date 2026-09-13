@@ -75,6 +75,7 @@
   font-size: 14px;
   outline: none;
   transition: border-color 0.2s ease;
+  font-family: revert;
 }
 
 .generic-input:focus, .generic-select:focus {

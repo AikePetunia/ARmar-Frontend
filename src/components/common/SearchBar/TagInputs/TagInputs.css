@@ -3,12 +3,53 @@
   margin-top: 12px;
   justify-content: space-between;
   gap: 16px;
+  align-items: start;
+}
+
+.ti__more-tags, .ti__price-options{
+  width: 100%;
+} 
+
+.ti__price-options {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
 }
 
 .ti__more-tags {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.ti__price-options {
-  width: 100%;
+.ti__added-tag {
+    background-color: var(--color-zinc-800);
+  padding: 6px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(163, 230, 53, 0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 12px rgba(163, 230, 53, 0.15);
+    margin-top: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ti__added-tag:hover {
+  transform: translate(0,-2px);
+  border: 1.5px solid #a3e635;
+  border-color: rgba(163, 230, 53, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 16px rgba(163, 230, 53, 0.25);
+}
+
+.ti__filter-title {
+  font-size: 12px;
+  margin-left: 4px !important;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
 }
