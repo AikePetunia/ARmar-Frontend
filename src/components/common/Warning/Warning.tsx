@@ -10,7 +10,13 @@ export function Warning() {
           <div className="doted-container warning">
             <img width="110" src={eye} alt="ojito" />
             <h4>¿hola? ¿como has llegado aquí?</h4>
-            <p>
+            <p> Quería decir que la pagina actualmente esta en "Mantenimiento".
+              <br />¿Pero que mantenimiento?
+              <p> Uno llamado: Unviersidad.
+              </p>
+              <p> Tengo muchas ideas, pero no tengo tiempo. Diciembre-enero-febrero :3</p>
+            </p>
+          {/*  <p>
               Esta página simplemente está en un desarrollo *muy* maduro. El
               acceso en sí es limitado.
               <br />
@@ -18,7 +24,6 @@ export function Warning() {
               <br />
               1. Es un proyecto de aprendizaje y no se usa IA agenticas en
               etapas iniciales.{" "}
-              {/*  Una cuestión de aprender fundamentos de las implementaciones que hago*/}
               <br />
               2. Se que es una herramienta. En este caso, se usó de consultor.{" "}
               <br />
@@ -43,7 +48,7 @@ export function Warning() {
               <br /> Cualquier error, sugerencia o simplemente que tengas ganas
               de hablarme, te dejo mi Discord: venus.s.s
             </p>
-            <button onClick={() => setIsVisible(false)}>Entiendo</button>
+             <button onClick={() => setIsVisible(false)}>Entiendo</button> */}
           </div>
         </div>
       )}
