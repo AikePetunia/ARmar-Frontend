@@ -1,11 +1,11 @@
 import eye from "@assets/icons/eye.gif";
 import "./Warning.css";
-import { useState } from "react";
+// import { useState } from "react";
 export function Warning() {
-  const [isVisible, setIsVisible] = useState(true);
+ //  const [isVisible, setIsVisible] = useState(true);
   return (
     <>
-      {isVisible && (
+      {/* {isVisible && (*/}
         <div className="warning-container">
           <div className="doted-container warning">
             <img width="110" src={eye} alt="ojito" />
@@ -51,7 +51,7 @@ export function Warning() {
              <button onClick={() => setIsVisible(false)}>Entiendo</button> */}
           </div>
         </div>
-      )}
+      {/*)}*/}
     </>
   );
 }
